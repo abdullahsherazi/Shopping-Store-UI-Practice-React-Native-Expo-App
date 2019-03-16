@@ -1,0 +1,56 @@
+Arguments: 
+  D:\Node\node.exe D:\yarn\bin\yarn.js add native-base --save
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;D:\New folder\;D:\yarn\bin\;D:\Andrios_SDK\platforms;D:\Andrios_SDK\platform-tools;D:\Andrios_SDK\tools;D:\Genymotion\tools;C:\Users\ABDULLAH\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\ABDULLAH\AppData\Local\Programs\Python\Python38\;C:\Users\ABDULLAH\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;C:\Users\ABDULLAH\AppData\Local\GitHubDesktop\bin;C:\Users\ABDULLAH\AppData\Roaming\npm;C:\Users\ABDULLAH\AppData\Local\Yarn\bin;D:\Node;
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  11.1.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (D:\yarn\lib\cli.js:129645:19)
+      at Object.onceWrapper (events.js:273:13)
+      at ClientRequest.emit (events.js:182:13)
+      at TLSSocket.emitRequestTimeout (_http_client.js:668:40)
+      at Object.onceWrapper (events.js:273:13)
+      at TLSSocket.emit (events.js:182:13)
+      at TLSSocket.Socket._onTimeout (net.js:454:8)
+      at listOnTimeout (timers.js:324:15)
+      at processTimers (timers.js:268:5)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "^32.0.0",
+      "firebase": "^5.8.5",
+      "react": "16.5.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+      "react-native-elements": "^1.1.0",
+      "react-native-gesture-handler": "^1.0.17",
+      "react-navigation": "^3.3.2"
+    },
+    "devDependencies": {
+      "babel-preset-expo": "^5.0.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
