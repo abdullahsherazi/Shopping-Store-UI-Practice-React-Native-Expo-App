@@ -1,22 +1,70 @@
 import React from 'react';
-import {Image,StyleSheet,Text,View,TouchableOpacity,ImageBackground,ScrollView} from 'react-native';
-import {Ionicons,AntDesign} from '@expo/vector-icons';
+import {StyleSheet, Text, View,TouchableOpacity,ImageBackground,ScrollView} from 'react-native';
+import {Ionicons,MaterialIcons} from '@expo/vector-icons';
 import womanClothes from "./photos/womanClothes.jpeg";
+import RenderItems_ListView from "./RenderItems_ListView";
+import RenderItems_LargeCardView from "./RenderItems_LargeCardView";
+import RenderItems_SmallCardView from "./RenderItems_SmallCardView";
+import BottomStyleSheet from "./BottomSheet";
 
 export default class WomenClothes extends React.Component {
+  constructor(props){
+    super(props);
+     this.state={
+          items:[
+            {ItemKey:0,ItemName:"Gildan Ultra Cotton T-shirt", ItemPrice:900, ItemPhoto:require('./photos/shirt1.jpg'),ItemSale:50},
+            {ItemKey:1,ItemName:"Oxford Button-Down Shirt", ItemPrice:600, ItemPhoto:require('./photos/shirt2.jpg'),ItemSale:22},
+            {ItemKey:2,ItemName:"Office Shirt", ItemPrice:3000, ItemPhoto:require('./photos/shirt5.jpg'),ItemSale:76},
+            {ItemKey:3,ItemName:"Dress Shirt", ItemPrice:100, ItemPhoto:require('./photos/shirt3.jpg'),ItemSale:35},
+            {ItemKey:4,ItemName:"Flannel Shirt", ItemPrice:2000, ItemPhoto:require('./photos/shirt4.jpg'),ItemSale:15},
+            {ItemKey:5,ItemName:"Party Shirt", ItemPrice:550, ItemPhoto:require('./photos/shirt6.jpg'),ItemSale:66},
+          ],
+         visible: false,
+         ListView:1,
+         LargeCardView:0,
+         SmallCardView:0
+        }
+      }
+        ListView=()=>{
+          this.setState({
+            ListView:1,
+            LargeCardView:0,
+            SmallCardView:0
+          });
+      }
+        LargeCardView=()=>{
+        this.setState({
+          ListView:0,
+          LargeCardView:1,
+          SmallCardView:0
+        });
+    }
+        SmallCardView=()=>{
+        this.setState({
+          ListView:0,
+          LargeCardView:0,
+          SmallCardView:1
+        });
+    }
+      _toggleBottomNavigationView=()=>{
+        //Toggling the visibility state of the bottom sheet
+        this.setState({ visible: !this.state.visible });
+      };
+      
   render() {
     return (
          <View style={styles.container}>
-       {/* <View> */}
-           {/* HEADER */}
-            <View style={{backgroundColor:"white",width:"100%",height:60,flexDirection:"row"}}>
-          <Ionicons name="md-arrow-back" size={30}  color="#404040" style={{paddingTop:12,paddingLeft:"9%"}} 
-           onPress={() => this.props.navigation.navigate('DrawerNavigator')} />
+    {/* HEADER */}
+    <View style={{backgroundColor:"#e6e6e6",width:"100%",height:60,flexDirection:"row"}}>
+            <Ionicons name="md-arrow-back" size={30}  color="#404040" style={{paddingTop:12,paddingLeft:"9%"}}           
+           onPress={() => this.props.navigation.goBack()}
+            />
           <View style={{borderBottomWidth:0.8,height:33,width:"33%",borderTopWidth:0.8,padding:0,marginTop:12,marginLeft:"16%"}}>
            <Text style={{fontSize:20,color:"#404040",textAlign:"center"}}>Alpha Store</Text>
           </View>
-          <AntDesign name="filter" size={30} color="black" size={30} style={{paddingTop:12,paddingLeft:"20%"}}  /> 
+          <MaterialIcons name="view-compact" size={30} color="black" size={30} style={{paddingTop:12,paddingLeft:"20%"}}   onPress={this._toggleBottomNavigationView}/> 
         </View>
+
 
         {/* Background Image */}
            <View style={{width:"100%",height:90,backgroundColor: "#ff6600",opacity: 0.5}}>
@@ -45,135 +93,44 @@ export default class WomenClothes extends React.Component {
           </TouchableOpacity>
        
         </View>
-      <ScrollView >
+     
+        <ScrollView >
+          {/* Here is is being checked that which view is selected */}
 
-          {/* ITEM */}
-          <View style={{flexDirection:"row",height:100}}>
-          {/* ITEM IMAGE */}
-              <View style={{width:"40%"}}>
-                      <Image source={require('./photos/shirt1.jpg')}  resizeMode="contain" style={{width:"100%",height:"100%"}}/>
-              </View>
-              {/* ITEM DESCRIPTION */}
-              <View style={{width:"60%",paddingTop:"8%"}}>
-              <Text style={{fontSize:15,color:"#3d5c5c",fontWeight:"bold"}}>Gildan Ultra Cotton T-shirt</Text>
-              <Text style={{fontSize:12,paddingTop:"3%",fontWeight:"bold"}}>$ 900</Text>
-              {/* 50% SALE */}
-              <View style={{width:100,height:20,backgroundColor:"#cca300",borderRadius:2,marginTop:"3%",marginLeft:"53%"}}>
-              <Text style={{textAlign:"center",fontWeight:"bold",color:"white"}}>50% SALE</Text>
-              </View>
-              </View>
-          </View>
-      {/* hr  */}
-                <View style={styles.hr} ></View>
+          {this.state.ListView===1 ?
+         this.state.items.map((items)=>{
+          //  sending data to RenderItems
+              return (<RenderItems_ListView navigation={this.props.navigation} key={items.ItemKey} ItemKey={items.ItemKey}  ItemName={items.ItemName} ItemPrice={items.ItemPrice} ItemPhoto={items.ItemPhoto} ItemSale={items.ItemSale}/>)
+          })
+          :  this.state.LargeCardView===1 ?
+            this.state.items.map((items)=>{
+              return (<RenderItems_LargeCardView navigation={this.props.navigation} key={items.ItemKey} ItemKey={items.ItemKey}  ItemName={items.ItemName} ItemPrice={items.ItemPrice} ItemPhoto={items.ItemPhoto} ItemSale={items.ItemSale}/>)
+          }) 
+          :
+          this.state.items.map((items)=>{
+            return (<RenderItems_SmallCardView navigation={this.props.navigation} key={items.ItemKey} ItemKey={items.ItemKey}  ItemName={items.ItemName} ItemPrice={items.ItemPrice} ItemPhoto={items.ItemPhoto} ItemSale={items.ItemSale}/>)
+        })
+          }
+        </ScrollView>
 
-                
-                 {/* ITEM */}
-          <View style={{flexDirection:"row",height:100}}>
-          {/* ITEM IMAGE */}
-              <View style={{width:"40%"}}>
-                      <Image source={require('./photos/shirt2.jpg')}  resizeMode="contain" style={{width:"100%",height:"100%"}}/>
-              </View>
-              {/* ITEM DESCRIPTION */}
-              <View style={{width:"60%",paddingTop:"8%"}}>
-              <Text style={{fontSize:15,color:"#3d5c5c",fontWeight:"bold"}}>Oxford Button-Down Shirt</Text>
-              <Text style={{fontSize:12,paddingTop:"3%",fontWeight:"bold"}}>$ 600</Text>
-              {/* 50% SALE */}
-              <View style={{width:100,height:20,backgroundColor:"#cca300",borderRadius:2,marginTop:"3%",marginLeft:"53%"}}>
-              <Text style={{textAlign:"center",fontWeight:"bold",color:"white"}}>20% SALE</Text>
-              </View>
-              </View>
-          </View>
-                <View style={styles.hr} ></View>
+         {/* sending selected view condition to BottomStyleSheet */}
+        <BottomStyleSheet visible={this.state.visible} 
+        _toggleBottomNavigationView={this._toggleBottomNavigationView}   
+        ListView={this.state.ListView} LargeCardView={this.state.LargeCardView} 
+        SmallCardView={this.state.SmallCardView}
+        ListViewFunc={ this.ListView} LargeCardViewFunc={this.LargeCardView} 
+        SmallCardViewFunc={this.SmallCardView}
+        />
 
-                 {/* ITEM */}
-          <View style={{flexDirection:"row",height:100}}>
-          {/* ITEM IMAGE */}
-              <View style={{width:"40%"}}>
-                      <Image source={require('./photos/shirt3.jpg')}  resizeMode="contain" style={{width:"100%",height:"100%"}}/>
-              </View>
-              {/* ITEM DESCRIPTION */}
-              <View style={{width:"60%",paddingTop:"8%"}}>
-              <Text style={{fontSize:15,color:"#3d5c5c",fontWeight:"bold"}}>Dress Shirt</Text>
-              <Text style={{fontSize:12,paddingTop:"3%",fontWeight:"bold"}}>$ 1000</Text>
-              {/* 50% SALE */}
-              <View style={{width:100,height:20,backgroundColor:"#cca300",borderRadius:2,marginTop:"3%",marginLeft:"53%"}}>
-              <Text style={{textAlign:"center",fontWeight:"bold",color:"white"}}>10% SALE</Text>
-              </View>
-              </View>
-          </View>
-                <View style={styles.hr} ></View>
-
-                 {/* ITEM */}
-          <View style={{flexDirection:"row",height:100}}>
-          {/* ITEM IMAGE */}
-              <View style={{width:"40%"}}>
-                      <Image source={require('./photos/shirt4.jpg')}  resizeMode="contain" style={{width:"100%",height:"100%"}}/>
-              </View>
-              {/* ITEM DESCRIPTION */}
-              <View style={{width:"60%",paddingTop:"8%"}}>
-              <Text style={{fontSize:15,color:"#3d5c5c",fontWeight:"bold"}}>Flannel Shirt</Text>
-              <Text style={{fontSize:12,paddingTop:"3%",fontWeight:"bold"}}>$ 100</Text>
-              {/* 50% SALE */}
-              <View style={{width:100,height:20,backgroundColor:"#cca300",borderRadius:2,marginTop:"3%",marginLeft:"53%"}}>
-              <Text style={{textAlign:"center",fontWeight:"bold",color:"white"}}>40% SALE</Text>
-              </View>
-              </View>
-          </View>
-                <View style={styles.hr} ></View>
-
-                 {/* ITEM */}
-          <View style={{flexDirection:"row",height:100}}>
-          {/* ITEM IMAGE */}
-              <View style={{width:"40%"}}>
-                      <Image source={require('./photos/shirt5.jpg')}  resizeMode="contain" style={{width:"100%",height:"100%"}}/>
-              </View>
-              {/* ITEM DESCRIPTION */}
-              <View style={{width:"60%",paddingTop:"8%"}}>
-              <Text style={{fontSize:15,color:"#3d5c5c",fontWeight:"bold"}}>Office Shirt</Text>
-              <Text style={{fontSize:12,paddingTop:"3%",fontWeight:"bold"}}>$ 200</Text>
-              {/* 50% SALE */}
-              <View style={{width:100,height:20,backgroundColor:"#cca300",borderRadius:2,marginTop:"3%",marginLeft:"53%"}}>
-              <Text style={{textAlign:"center",fontWeight:"bold",color:"white"}}>35% SALE</Text>
-              </View>
-              </View>
-          </View>
-                <View style={styles.hr} ></View>
-
-                       {/* ITEM */}
-          <View style={{flexDirection:"row",height:100}}>
-          {/* ITEM IMAGE */}
-              <View style={{width:"40%"}}>
-                      <Image source={require('./photos/shirt6.jpg')}  resizeMode="contain" style={{width:"100%",height:"100%"}}/>
-              </View>
-              {/* ITEM DESCRIPTION */}
-              <View style={{width:"60%",paddingTop:"8%"}}>
-              <Text style={{fontSize:15,color:"#3d5c5c",fontWeight:"bold"}}>Party Shirt</Text>
-              <Text style={{fontSize:12,paddingTop:"3%",fontWeight:"bold"}}>$ 350</Text>
-              {/* 50% SALE */}
-              <View style={{width:100,height:20,backgroundColor:"#cca300",borderRadius:2,marginTop:"3%",marginLeft:"53%"}}>
-              <Text style={{textAlign:"center",fontWeight:"bold",color:"white"}}>55% SALE</Text>
-              </View>
-              </View>
-          </View>
-                <View style={styles.hr} ></View>
-
-      </ScrollView>
-
-     </View>
-    )
-  }
-}
-
+</View>
+  )
+ }}
 
 const styles = StyleSheet.create({
 
-  container:{
-   flex: 1,
-   justifyContent: 'flex-start',
-   paddingTop:"6.5%"
-  },
-  hr:{
-            borderBottomColor: 'black',
-            borderBottomWidth: 0.5,
-           },
+container:{
+flex: 1,
+justifyContent: 'flex-start',
+paddingTop:24
+}
 });

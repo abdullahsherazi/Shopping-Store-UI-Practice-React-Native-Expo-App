@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View,StyleSheet,TextInput,TouchableOpacity} from 'react-native';
 import {MaterialCommunityIcons,AntDesign,FontAwesome,Entypo} from '@expo/vector-icons';
+import i18n from 'i18n-js';
 
 export default class SignIn extends React.Component {
   render() {
@@ -12,22 +13,22 @@ export default class SignIn extends React.Component {
   {/* Email Area */}
       <View style={{flexDirection:"row",paddingBottom:15}}>
       <MaterialCommunityIcons name="email-outline" size={20} color="black" style={{paddingTop:15}}  /> 
-      <TextInput placeholder="Email" style={styles.Input} />
+      <TextInput placeholder={i18n.t('email')} style={styles.Input} />
       </View>
 {/* hr line */}
       <View style={styles.hr} />
   {/* Password Area */}
       <View style={{flexDirection:"row",paddingTop:15}}>
       <AntDesign name="lock" size={20} color="black" style={{paddingTop:15}}  /> 
-      <TextInput placeholder="Password" secureTextEntry={true} style={styles.Input} />
+      <TextInput placeholder={i18n.t('password')} secureTextEntry={true} style={styles.Input} />
       </View>
 
       <TouchableOpacity  onPress={() => this.props.navigation.navigate('DrawerNavigator')} style={styles.signIn}>
-       <Text style={{fontSize:20, color:"white",textAlign:"center",fontWeight:"bold"}}> SIGN IN </Text>
+       <Text style={{fontSize:20, color:"white",textAlign:"center",fontWeight:"bold"}}> {i18n.t('sign_in')} </Text>
       </TouchableOpacity>
 
       <TouchableOpacity   onPress={() => this.props.navigation.navigate('ForgetPassword')}>
-      <Text style={{textAlign:"center",marginTop:20}}>Forget password?</Text>
+      <Text style={{textAlign:"center",marginTop:20}}>{i18n.t('forget_password')}?</Text>
       </TouchableOpacity>
       </View>
 {/* 2nd Container */}
@@ -53,7 +54,7 @@ export default class SignIn extends React.Component {
       <View style={{paddingLeft:50,paddingRight:50,paddingTop:30,flexDirection:"row"}}>
             <Text style={{fontSize:15, textAlign:"center"}}>Not a Member? </Text>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}>
-                <Text style={{fontSize:15, textAlign:"center", color:"#cca300"}}>SIGN UP</Text>
+                <Text style={{fontSize:15, textAlign:"center", color:"#cca300"}}>{i18n.t('sign_up')}</Text>
             </TouchableOpacity>
     </View>
       

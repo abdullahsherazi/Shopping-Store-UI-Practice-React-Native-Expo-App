@@ -7,6 +7,7 @@ import womanClothes from "./photos/womanClothes.jpeg";
 import kidsClothes from "./photos/kidsclothes.jpg";
 import winter from "./photos/winter.jpg";
 import girl from "./photos/girl.jpg";
+import i18n from 'i18n-js';
 
 export default class Store extends React.Component {
   render() {
@@ -14,7 +15,7 @@ export default class Store extends React.Component {
       <View style={styles.container}>
       {/* Header */}
 
-      <View style={{backgroundColor:"white",width:"100%",height:60,flexDirection:"row",marginTop:24}}>
+      <View style={{backgroundColor:"#e6e6e6",width:"100%",height:60,flexDirection:"row",marginTop:24}}>
        <Feather name="menu" size={30}  color="#404040" style={{paddingTop:12,paddingLeft:"7%"}} 
        onPress={() => this.props.navigation.toggleDrawer()} />
       <View style={{borderBottomWidth:0.8,height:33,width:"33%",borderTopWidth:0.8,padding:0,marginTop:12,marginLeft:"18%"}}>
@@ -25,16 +26,16 @@ export default class Store extends React.Component {
 
       {/* <AppDrawerNavigator /> */}
       <ScrollView style={{color:"white"}}>
-        <View style={{width:"100%", alignItems:"center", backgroundColor:"#004d4d", flexDirection:"row",height:40}}>
-          <Text style={{color:"#cca300",fontSize:12,paddingLeft:27}}>LAST CHANCE! </Text>
-          <Text style={{color:"white",fontSize:12}}>Holiday shipping end soon. </Text>
-          <Text style={{fontWeight:"bold", color:"#cca300",fontSize:12}}>SHOP NOW</Text>
-        </View>
+        {/* <View style={{width:"100%", alignItems:"center", backgroundColor:"#004d4d", flexDirection:"row",height:40}}>
+          <Text style={{color:"#cca300",fontSize:12,paddingLeft:27}}>{i18n.t('last_chance')}</Text>
+          <Text style={{color:"white",fontSize:12}}>{i18n.t('Holidayshippingendsoon')}</Text>
+          <Text style={{fontWeight:"bold", color:"#cca300",fontSize:12}}>{i18n.t('SHOPNOW')}</Text>
+        </View> */}
 
         <TouchableOpacity onPress={() => this.props.navigation.navigate('ManClothes')}>
         <View style={{width:"100%",height:90,backgroundColor: "#003333",opacity: 0.5}}>
         <ImageBackground source={manClothes} style={{flex:1,width: '100%',height:"100%"}}> 
-         <Text style={{fontSize:40,color:"white",textAlign:"center"}}>MEN</Text>
+         <Text style={{fontSize:40,color:"white",textAlign:"center"}}>MEN {i18n.t('sale')}</Text>
          <Text style={{fontSize:20,color:"white",textAlign:"center"}}>OUTWEAR</Text>
         </ImageBackground>
         </View>

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ShoppingStore",
-    "slug": "ShoppingStore",
+    "name": "ShoppingStoreUI",
+    "slug": "ShoppingStoreUI",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [

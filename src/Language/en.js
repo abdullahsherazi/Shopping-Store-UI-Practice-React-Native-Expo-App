@@ -1,0 +1,26 @@
+export default {  
+    sale: 'Sale',
+    shop: 'Shop',
+    bag: 'Bag',
+    inspiration: 'Inspiration',
+    favorites: 'Favorites',
+    my_account: 'My Account',
+    customer_support: 'Customer Support',
+    logout: 'Logout',
+    last_chance: "LAST CHANCE! ",
+    Holidayshippingendsoon: "Holiday shipping end soon.",
+    SHOPNOW: "SHOP NOW",
+    arabic:"Arabic",
+    english:"English",
+    choose_language:"Choose Language",
+    language:"Language",
+    setting:"Setting",
+    payment_information:"Payment Information",
+    order:"1 Order in Progress",
+    sign_up:"SIGN UP",
+    sign_in:"SIGN IN",
+    forget_password:"FORGET PASSWORD",
+    email:"Email",
+    password:"Password"
+
+  };

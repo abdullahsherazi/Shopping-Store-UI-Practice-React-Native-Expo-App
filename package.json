@@ -9,9 +9,12 @@
   "dependencies": {
     "expo": "^32.0.0",
     "firebase": "^5.8.5",
+    "i18n-js": "^3.2.1",
+    "i18next": "^15.0.9",
     "native-base": "^2.12.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-btr": "^1.1.4",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.0.17",
     "react-native-paper": "^2.13.0",
