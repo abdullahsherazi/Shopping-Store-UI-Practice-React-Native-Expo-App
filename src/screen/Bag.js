@@ -173,6 +173,7 @@ class Bag extends React.Component {
 
         {/* CHECKOUT */}
 
+<<<<<<< HEAD
         <TouchableOpacity
           style={{
             borderRightWidth: 0.6,
@@ -254,11 +255,30 @@ class Bag extends React.Component {
           </View>
         </View>
       </View>
+=======
+<TouchableOpacity style={{borderRightWidth:0.6,borderLeftWidth:0.6,borderTopWidth:0.6,backgroundColor:"#cca300",width:"70%",height:30,borderRadius:7,paddingTop:5,marginLeft:"16%"}} >
+  <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
+          <Text style={{textAlign:"center",color:"white",fontWeight:"bold"}}>CHECKOUT</Text>
+          <FontAwesome name="arrow-right" size={20}  color="white" style={{marginLeft:4}} />           
+  </View>
+</TouchableOpacity>
+
+
+{/* Table Footer "Total Amount" */}
+    <View style={{borderBottomColor:"black",borderTopWidth:0.6,borderBottomWidth:0.6,flexDirection:"row",height:30,backgroundColor:"#cca300"}}>
+        <View style={{width:"48%",borderRightWidth:0.6,borderLefttWidth:0.6}}><Text style={{textAlign:"center",fontSize:15,color:"white",marginTop:3}} >Total Amount</Text></View>
+        <View style={{borderRightWidth:0.6,width:"52%"}}><Text style={{textAlign:"center",fontSize:15,color:"white",marginTop:3}} >$ 310</Text></View>
+</View>
+
+      </View>
+
+>>>>>>> f2d560d3c76ef65172457a8178f5d46eeb730d6e
     );
   }
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   container: {
     flex: 1,
     justifyContent: "flex-start",
@@ -270,3 +290,16 @@ const styles = StyleSheet.create({
   }
 });
 export default connect(mapStateToProps)(Bag);
+=======
+           container:{
+            flex: 1,
+            justifyContent: 'flex-start',
+            backgroundColor:"white"
+           } ,
+           hr:{
+            borderBottomColor: 'black',
+            borderBottomWidth: 0.5,
+           },
+        });
+    
+>>>>>>> f2d560d3c76ef65172457a8178f5d46eeb730d6e
